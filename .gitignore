@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtualenv
+venv/
+.env
+
+# Docker
+*.log
+
+# Mac
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# migrations cache
+alembic/versions/*.pyc
+
+# pytest
+.pytest_cache/
+
+# coverage
+htmlcov/
+.coverage
