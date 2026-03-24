@@ -27,3 +27,11 @@ alembic/versions/*.pyc
 # coverage
 htmlcov/
 .coverage
+
+# SSH keys
+*.pem
+*.key
+lost_laptop_key
+lost_laptop_key.pub
+deploy_key
+deploy_key.pub
