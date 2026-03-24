@@ -11,5 +11,5 @@ from app.core.database import engine, Base
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
+# url
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
