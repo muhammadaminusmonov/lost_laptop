@@ -1,24 +1,27 @@
+version: '3.9'
+
 services:
+  app:
+    image: ghcr.io/muhammadaminusmonov/lost_laptop:latest
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - db
 
   db:
     image: postgres:15
+    container_name: postgres_db
     restart: always
-    env_file:
-      - .env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
-  api:
-    build: .
-    restart: always
-    depends_on:
-      - db
-    env_file:
-      - .env
-    volumes:
-      - .:/app
-    ports:
-      - "8000:8000"
 
 volumes:
   postgres_data:
