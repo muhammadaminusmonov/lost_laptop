@@ -43,6 +43,11 @@ class UniqueNumber(Base):
 class LostDevice(Base):
     __tablename__ = 'lost_device'
     id = Column(Integer, primary_key=True, index=True)
+    device_id = Column(Integer, ForeignKey('device.id'), nullable=False)
+    location = Column(String, nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    uuid = Column(String, default=lambda: str(uuid.uuid4()), unique=True)
 
 
 
