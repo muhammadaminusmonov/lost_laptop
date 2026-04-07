@@ -2,7 +2,8 @@ version: '3.9'
 
 services:
   app:
-    image: ghcr.io/muhammadaminusmonov/lost_laptop:latest
+#    image: ghcr.io/muhammadaminusmonov/lost_laptop:latest
+    build: .
     container_name: fastapi_app
     ports:
       - "8000:8000"
@@ -18,7 +19,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: root
       POSTGRES_DB: app_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
