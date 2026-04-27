@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Boolean
 from sqlalchemy.sql import func
 import uuid
 from app.core.database import Base
-from app.models.user import User
 
 
 class Category(Base):
@@ -62,4 +61,17 @@ class Device(Base):
     description = Column(String, nullable=True)
     status = Column(Boolean)
     uid = Column(Integer, ForeignKey('unique_number_category.id'), nullable=False)
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, nullable=False)
+    username = Column(String, unique=True, nullable=False)
+    password = Column(String, nullable=False)
+    email = Column(String, unique=True, index=True)
+    phone = Column(String, unique=True, nullable=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    uuid = Column(String, default=lambda: str(uuid.uuid4()), unique=True)
 
